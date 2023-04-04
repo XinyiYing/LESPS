@@ -35,7 +35,6 @@ Supervision (LESPS). During training, intermediate predictions of CNNs are used 
 **SIRST3** is used for training, and is a combination of NUAA-SIRST, NUDT-SIRST, IRSTD-1K datasets.
 
 * Our project has the following structure:
-<br>
   ```
   ├──./datasets/
   │    ├── images
@@ -50,10 +49,11 @@ Supervision (LESPS). During training, intermediate predictions of CNNs are used 
   │    │    ├── 001327.png
   │    ├── img_idx
   │    │    ├── train_SIRST3.txt
+  │    │    ├── test_SIRST3.txt  
   │    │    ├── test_NUAA-SIRST.txt
   │    │    ├── test_NUDT-SIRST.txt
   │    │    ├── test_IRSTD-1K.txt
-  ```
+```
 <br>
 
 ## Train
