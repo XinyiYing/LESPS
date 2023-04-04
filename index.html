@@ -12,8 +12,8 @@
 <div id="container" class="STYLE37">
 
 <br>
-<p class="styleTittle"  style="font-size:36px"  align="center">Mapping Degeneration Meets Label Evolution: Learning Infrared Small Target Detection with Single Point Supervision</p><br>
-<p align="center"><span class="STYLEAuthor"> 
+<p class="styleTittle" align="center">Mapping Degeneration Meets Label Evolution: Learning Infrared Small Target Detection with Single Point Supervision</p><br>
+<p style="font-size:16px" align="center"><span class="STYLEAuthor"> 
 </span> 
 </p>
 <br>
@@ -23,7 +23,11 @@
 <hr style="BORDER-LEFT-STYLE: none; BORDER-TOP: gray 3px groove; HEIGHT: 0px; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none">
 <div style="padding:20px 20px 20px 20px; font-size=20; color: #333; ">
 	<p style="padding:15px 15px 15px 15px; background-color:#EEE; font-size:16px; font-family:PmingLiu; line-height:23px;", align="justify">
-		Training a convolutional neural network (CNN) to detect infrared small targets in a fully supervised manner has gained remarkable research interests in recent years, but is highly labor expensive since a large number of per-pixel annotations are required. To handle this problem, in this paper, we make the first attempt to achieve infrared small target detection with point-level supervision. Interestingly, during the training phase supervised by point labels, we discover that CNNs first learn to segment a cluster of pixels near the targets, and then gradually converge to predicting groundtruth point labels. Motivated by this ''mapping degeneration'' phenomenon, we propose a label evolution framework named Label Evolution with Single Point Supervision (LESPS) to progressively expand the point label by leveraging the intermediate predictions of CNNs. In this way, the network predictions can finally approximate the updated pseudo labels, and a pixel-level target mask can be obtained to train CNNs in an end-to-end manner. We conduct extensive experiments with insightful visualizations to validate the effectiveness of our method. Experimental results show that CNNs equipped with LESPS can well recover the target masks from corresponding point labels, and can achieve over 70% and 95% of their fully supervised performance in terms of pixel-level intersection over union (IoU) and object-level probability of detection (Pd), respectively. Code is submitted for review and will be released upon acceptance.
+		Training a convolutional neural network (CNN) to detect infrared small targets in a fully supervised manner has gained remarkable research interests in recent years, but is highly labor expensive since a large number of per-pixel annotations are required.
+		To handle this problem, in this paper, we make the first attempt to achieve infrared small target detection with point-level supervision.
+		Interestingly, during the training phase supervised by point labels, we discover that CNNs first learn to segment a cluster of pixels near the targets, and then gradually converge to predict groundtruth point labels. 
+		Motivated by this "mapping degeneration" phenomenon, we propose a label evolution framework named label evolution with single point supervision (LESPS) to progressively expand the point label by leveraging the intermediate predictions of CNNs. In this way, the network predictions can finally approximate the updated pseudo labels, and a pixel-level target mask can be obtained to train CNNs in an end-to-end manner.
+		We conduct extensive experiments with insightful visualizations to validate the effectiveness of our method. Experimental results show that CNNs equipped with LESPS can well recover the target masks from corresponding point labels, {and can achieve over 70% and 95% of their fully supervised performance in terms of pixel-level intersection over union (IoU) and object-level probability of detection (Pd), respectively. Code is available at https://github.com/XinyiYing/LESPS.
 	</p>
 </div>
 <br><br>
@@ -33,8 +37,20 @@
 <table width="100%" border="0">
   <tbody>
   <tr>
-    <th scope="col"><img src="./Figs/MD1.jpg" width="80%"></th></tr></tbody></table>
-<p class="styleCaption" align="justify">Fig. 1: Illustrations of mapping degeneration under point supervision. CNNs always tend to segment a cluster of pixels near the targets with low confidence at the early stage, and then gradually learn to predict groundtruth point labels with high confidence.</p><br><br><br>
+    <th scope="col"><img src="https://raw.github.com/XinyiYing/LESPS/master/Figs/MD1.jpg" width="80%"></th></tr></tbody></table>
+<p class="styleCaption" align="justify">Fig. 1: Illustrations of mapping degeneration under point supervision. CNNs always tend to segment a cluster of pixels near the targets with low confidence at the early stage, and then gradually learn to predict groundtruth point labels with high confidence.</p><br><br>
+
+<table width="100%" border="0">
+  <tbody>
+  <tr>
+    <th scope="col"><img src="https://raw.github.com/XinyiYing/LESPS/master/Figs/MD2.jpg" width="100%"></th></tr></tbody></table>
+<p class="styleCaption" align="justify">Fig. 2: Quantitative and qualitative illustrations of mapping degeneration in CNNs.</p><br><br>
+
+<table width="100%" border="0">
+	<tbody>
+	<tr>
+	  <th scope="col"><img src="https://raw.github.com/XinyiYing/LESPS/master/Figs/MD_abl.jpg" width="100%"></th></tr></tbody></table>
+  <p class="styleCaption" align="justify">Fig. 3: Analyses of Mapping Degeneration with respect to different characteristics of targets (i.e.,(a) intensity, (b) size, (c) shape, and (d) local background clutter) and point labels (i.e.,(e) numbers and (f) locations). We visualize the zoom-in target regions of input images with GT point labels (i.e., red dots in images) and corresponding CNN predictions (in the epoch reaching maximum IoU). Illustrations of mapping degeneration under point supervision. CNNs always tend to segment a cluster of pixels near the targets with low confidence at the early stage, and then gradually learn to predict groundtruth point labels with high confidence.</p><br><br><br>
 
 <p class="styleCaption" align="justify">We develop an <b>online interactive demo</b> to show the mapping degeneration phenomenon. You can adjust the epoch number by dragging the sliding blocks.</p><br><br>
 
@@ -42,10 +58,10 @@
 <!-- Figure -->
 <div id="Scene1_father" style="width: 900; height: 582px;">
   <div id="Scene1_box2", class="wrapper", style="width:900px; height:582px; position: absolute; left: 512px;">
-      <div class="middle"> <img id="Scene1_img2", src="Figs/scene1/image.png", style="width:900px; height:582px;", draggable="false"> 
+      <div class="middle"> <img id="Scene1_img2", src="https://raw.github.com/XinyiYing/LESPS/master/Figs/scene1/image.png", style="width:900px; height:582px;", draggable="false"> 
         <div id='test1', style="position: absolute; top: 23px; left: 570px; font-size: 28px; background:#000; color: #FFF">Image</div>
       </div>
-      <div class="top"> <img id="Scene1_img1", src="Figs/scene1/epoch34.png", style="width:900px; height:582px;", draggable="false"> 
+      <div class="top"> <img id="Scene1_img1", src="https://raw.github.com/XinyiYing/LESPS/master/Figs/scene1/epoch34.png", style="width:900px; height:582px;", draggable="false"> 
         <div id='test2', style="position: absolute; top: 23px; left: 116px;  font-size: 28px; background:#000; color: #FFF">Feature</div>
       </div>
       <div id="Scene1_scroller_box", class="scroller scroller-top">
@@ -71,16 +87,15 @@
 <br>
 <br>
 <br>
-<br>
 
 <!-- Scene2 -->
 <!-- Figure -->
 <div id="Scene2_father" style="width: 900; height: 573px;">
   <div id="Scene2_box2", class="wrapper", style="width:900px; height:573px; position: absolute; left: 512px;">
-      <div class="middle"> <img id="Scene2_img2", src="Figs/scene2/image.png", style="width:900px; height:573px;", draggable="false"> 
+      <div class="middle"> <img id="Scene2_img2", src="https://raw.github.com/XinyiYing/LESPS/master/Figs/scene2/image.png", style="width:900px; height:573px;", draggable="false"> 
         <div id='test1', style="position: absolute; top: 20px; left: 565px; font-size: 28px; background:#000; color: #FFF">Image</div>
       </div>
-      <div class="top"> <img id="Scene2_img1", src="Figs/scene2/epoch75.png", style="width:900px; height:573px;", draggable="false"> 
+      <div class="top"> <img id="Scene2_img1", src="https://raw.github.com/XinyiYing/LESPS/master/Figs/scene2/epoch75.png", style="width:900px; height:573px;", draggable="false"> 
         <div id='test2', style="position: absolute; top: 20px; left: 115px;  font-size: 28px; background:#000; color: #FFF">Feature</div>
       </div>
       <div id="Scene2_scroller_box", class="scroller scroller-top">
@@ -106,16 +121,15 @@
 <br>
 <br>
 <br>
-<br>
 
 <!-- Scene3 -->
 <!-- Figure -->
 <div id="Scene3_father" style="width: 900; height: 510px;">
   <div id="Scene3_box2", class="wrapper", style="width:900px; height:510px; position: absolute; left: 512px;">
-      <div class="middle"> <img id="Scene3_img2", src="Figs/scene3/image.png", style="width:900px; height:510px;", draggable="false"> 
+      <div class="middle"> <img id="Scene3_img2", src="https://raw.github.com/XinyiYing/LESPS/master/Figs/scene3/image.png", style="width:900px; height:510px;", draggable="false"> 
         <div id='test1', style="position: absolute; top: 22px; left: 630px; font-size: 28px; background:#000; color: #FFF">Image</div>
       </div>
-      <div class="top"> <img id="Scene3_img1", src="Figs/scene3/epoch23.png", style="width:900px; height:510px;", draggable="false"> 
+      <div class="top"> <img id="Scene3_img1", src="https://raw.github.com/XinyiYing/LESPS/master/Figs/scene3/epoch23.png", style="width:900px; height:510px;", draggable="false"> 
         <div id='test2', style="position: absolute; top: 22px; left: 52px;  font-size: 28px; background:#000; color: #FFF">Feature</div>
       </div>
       <div id="Scene3_scroller_box", class="scroller scroller-top">
@@ -141,7 +155,6 @@
 <br>
 <br>
 <br>
-<br>
 
 <body>	
   <script type="text/javascript">
@@ -158,7 +171,7 @@
   Scene1_slider_noise.onmouseup = function (e) {
     var Scene1_noise = document.getElementById("Scene1_noise_value").value;
     Scene1_noise = parseInt(Scene1_noise);
-    Scene1_img1.src = "Figs/scene1/epoch" + Scene1_noise + ".png";
+    Scene1_img1.src = "https://raw.github.com/XinyiYing/LESPS/master/Figs/scene1/epoch" + Scene1_noise + ".png";
   }
 
   </script>
@@ -177,7 +190,7 @@
   Scene2_slider_noise.onmouseup = function (e) {
     var Scene2_noise = document.getElementById("Scene2_noise_value").value;
     Scene2_noise = parseInt(Scene2_noise);
-    Scene2_img1.src = "Figs/scene2/epoch" + Scene2_noise + ".png";
+    Scene2_img1.src = "https://raw.github.com/XinyiYing/LESPS/master/Figs/scene2/epoch" + Scene2_noise + ".png";
   }
 
   </script>
@@ -196,7 +209,7 @@
   Scene3_slider_noise.onmouseup = function (e) {
     var Scene3_noise = document.getElementById("Scene3_noise_value").value;
     Scene3_noise = parseInt(Scene3_noise);
-    Scene3_img1.src = "Figs/scene3/epoch" + Scene3_noise + ".png";
+    Scene3_img1.src = "https://raw.github.com/XinyiYing/LESPS/master/Figs/scene3/epoch" + Scene3_noise + ".png";
   }
 
   </script>
@@ -435,28 +448,47 @@
 
 
 <p class="STYLESection" align="center">The Label Evolution Framework</p>
-<hr style="BORDER-LEFT-STYLE: none; BORDER-TOP: gray 3px groove; HEIGHT: 0px; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none">
+<hr style="BORDER-LEFT-STYLE: none; BORDER-TOP: gray 3px groove; HEIGHT: 0px; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none"><br>
 <table width="100%" border="0">
   <tbody>
   <tr>
-    <th scope="col"><img src="./Figs/LESPS.jpg" width="80%"></th></tr></tbody></table>
-<p class="styleCaption" align="justify">Fig. 2: Illustrations of Label Evolution with Single Point Supervision (LESPS). During training, intermediate predictions of CNNs are used to progressively expand point labels to mask labels. Black arrows represent each round of label updates.</p><br><br><br>
+    <th scope="col"><img src="https://raw.github.com/XinyiYing/LESPS/master/Figs/LESPS.jpg" width="80%"></th></tr></tbody></table>
+<p class="styleCaption" align="justify">Fig. 4: Illustrations of Label Evolution with Single Point Supervision (LESPS). During training, intermediate predictions of CNNs are used to progressively expand point labels to mask labels. Black arrows represent each round of label updates.</p><br><br>
+
+<table width="100%" border="0">
+	<p class="styleCaption" align="justify">Table 1. Average results achieved by DNAnet with (w/) and without (w/o) LESPS under centroid, coarse point supervision together with full supervision.</p>
+	<tbody>
+	<tr>
+	  <th scope="col"><img src="https://raw.github.com/XinyiYing/LESPS/master/Figs/table0.jpg" width="40%"></th></tr></tbody></table><br>
+
+<table width="100%" border="0">
+<tbody>
+<tr>
+	<th scope="col"><img src="https://raw.github.com/XinyiYing/LESPS/master/Figs/LESPS_exp.jpg" width="80%"></th></tr></tbody></table>
+<p class="styleCaption" align="justify">Fig. 5: Quantitative and qualitative results of evolved target masks.</p><br><br>	  
+
+<table width="100%" border="0">
+	<tbody>
+	<tr>
+		<th scope="col"><img src="https://raw.github.com/XinyiYing/LESPS/master/Figs/LESPS_abl.jpg" width="100%"></th></tr></tbody></table>
+	<p class="styleCaption" align="justify">Fig. 6: PA (P) and IoU (I) results of LESPS with respect to (a) initial evolution epoch, (b) Tb and (c) k of evolution threshold, and (d) evolution frequency.</p>
+<br><br><br>
 
 <p class="STYLESection" align="center">Quantitative Results</p>
 <hr style="BORDER-LEFT-STYLE: none; BORDER-TOP: gray 3px groove; HEIGHT: 0px; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none">
 <br>
-<p class="styleCaption" align="justify">Table 1: IoU (×10e2), Pd (×10e2) and Fa(×10e6) values of different methods achieved on NUAA-SIRST, NUDT-SIRST and IRSTD-1K. “CNN Full”, “CNN Centroid”, and “CNN Coarse” represent CNN-based methods under full supervision, centroid and coarse point supervision. “+” represents CNN-based methods equipped with LESPS.</p>
+<p class="styleCaption" align="justify">Table 2: IoU (×10e2), Pd (×10e2) and Fa(×10e6) values of different methods achieved on NUAA-SIRST, NUDT-SIRST and IRSTD-1K. “CNN Full”, “CNN Centroid”, and “CNN Coarse” represent CNN-based methods under full supervision, centroid and coarse point supervision. “+” represents CNN-based methods equipped with LESPS.</p>
 <table width="100%" border="0">
   <tbody>
   <tr>
-    <th scope="col"><img src="./Figs/table1.jpg" width="100%"></th></tr></tbody></table>
+    <th scope="col"><img src="https://raw.github.com/XinyiYing/LESPS/master/Figs/table1.jpg" width="100%"></th></tr></tbody></table>
 <br><br>
 
-<p class="styleCaption" align="justify">Table 2: Average IoU (×10e2), Pd (×10e2) and Fa(×10e6) values on NUAA-SIRST, NUDT-SIRST and IRSTD-1K of DNAnet trained with pseudo labels generated by different LCM-based methods and LESPS under centroid and coarse point supervision.</p>
+<p class="styleCaption" align="justify">Table 3: Average IoU (×10e2), Pd (×10e2) and Fa(×10e6) values on NUAA-SIRST, NUDT-SIRST and IRSTD-1K of DNAnet trained with pseudo labels generated by different LCM-based methods and LESPS under centroid and coarse point supervision.</p>
 <table width="100%" border="0">
   <tbody>
   <tr>
-    <th scope="col"><img src="./Figs/table2.jpg" width="50%"></th></tr></tbody></table>
+    <th scope="col"><img src="https://raw.github.com/XinyiYing/LESPS/master/Figs/table2.jpg" width="50%"></th></tr></tbody></table>
 <br><br><br>
 
 <p class="STYLESection" align="center">Qualitative Results</p>
@@ -465,14 +497,14 @@
 <table width="100%" border="0">
   <tbody>
   <tr>
-    <th scope="col"><img src="./Figs/visual1.jpg" width="100%"></th></tr></tbody></table>
-<p class="styleCaption" align="justify">Fig. 3: Visualizations of regressed labels during training and network predictions during inference with centroid and coarse point supervision.</p><br><br>
+    <th scope="col"><img src="https://raw.github.com/XinyiYing/LESPS/master/Figs/visual1.jpg" width="80%"></th></tr></tbody></table>
+<p class="styleCaption" align="justify">Fig. 7: Visualizations of regressed labels during training and network predictions during inference with centroid and coarse point supervision.</p><br><br>
 
 <table width="100%" border="0">
   <tbody>
   <tr>
-    <th scope="col"><img src="./Figs/visual2.jpg" width="80%"></th></tr></tbody></table>
-<p class="styleCaption" align="justify">Fig. 4: Visual detection results of different methods achieved on NUAA-SIRST, NUDT-SIRST and IRSTD-1K. Correctly detected targets and false alarms are highlighted by red and orange circles, respectively.</p><br><br><br>
+    <th scope="col"><img src="https://raw.github.com/XinyiYing/LESPS/master/Figs/visual2.jpg" width="100%"></th></tr></tbody></table>
+<p class="styleCaption" align="justify">Fig. 8: Visual detection results of different methods achieved on NUAA-SIRST, NUDT-SIRST and IRSTD-1K. Correctly detected targets and false alarms are highlighted by red and orange circles, respectively.</p><br><br><br>
 
 <div style="padding:10px 0px 5px 0px">
 	<p class="STYLESection" align="center">Materials</p>
@@ -481,14 +513,14 @@
 
 <div style="padding:12px 0px 10px 120px;", class="one" align="center">
   <div style=" float: left" >
-  <a href="https://openreview.net/pdf?id=jdt7pLZyWR">
-  <img src="Figs/paper.png" height="150">
+  <a href="">
+  <img src="https://raw.github.com/XinyiYing/LESPS/master/Figs/paper.png" height="150">
   <p style="padding:0px 0px 20px 0px">Paper</p>
   </a>
 </div>
 <div >
-  <a href="https://github.com/CVPR2023ID6230/LESPS">
-  <img src="Figs/github.jpg" height="150">
+  <a href="https://github.com/XinyiYing/LESPS">
+  <img src="https://raw.github.com/XinyiYing/LESPS/master/Figs/github.jpg" height="150">
   <p style="padding:0px 0px 20px 0px">Code</p>
   </a>
 </div>
