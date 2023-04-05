@@ -1,6 +1,6 @@
 # Mapping Degeneration Meets Label Evolution: Learning Infrared Small Target Detection with Single Point Supervision
 
-Pytorch implementation of our Label Evolution with Single Point Supervision (LESPS).&nbsp;[**[Paper]**]() &nbsp; [**[Web]**](https://xinyiying.github.io/LESPS/) <br>
+Pytorch implementation of our Label Evolution with Single Point Supervision (LESPS).&nbsp;[**[Paper]**](https://arxiv.org/pdf/2304.01484.pdf) &nbsp; [**[Web]**](https://xinyiying.github.io/LESPS/) <br>
 
 **News: We recommend our newly-released repository **BasicIRSTD**, an open-source and easy-to-use toolbox for infrared small target detction.&nbsp;[**[link]**](https://github.com/XinyiYing/BasicIRSTD)**
 <br><br>
