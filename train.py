@@ -171,6 +171,10 @@ if __name__ == '__main__':
         opt.dataset_name = dataset_name
         for model_name in opt.model_names:
             opt.model_name = model_name
+            if opt.model_name in 'ACM, ALCNet':
+                opt.LESPS_Tepoch = 100
+            elif opt.model_name in 'DNANet':
+                opt.LESPS_Tepoch = 40
             opt.save_perdix = opt.model_name + '_LESPS_' + opt.label_type
             
             if opt.cache:
