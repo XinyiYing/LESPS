@@ -53,7 +53,7 @@ Supervision (LESPS). During training, intermediate predictions of CNNs are used 
   │    │    ├── test_NUAA-SIRST.txt
   │    │    ├── test_NUDT-SIRST.txt
   │    │    ├── test_IRSTD-1K.txt
-```
+  ```
 <br>
 
 ## Train
