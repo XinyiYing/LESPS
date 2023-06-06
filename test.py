@@ -61,7 +61,7 @@ def test():
     opt.f.write("PD, FA:\t" + str(results2) + '\n')
 
 if __name__ == '__main__':
-    opt.f = open('./test_' + (time.ctime()).replace(' ', '_') + '.txt', 'w')
+    opt.f = open('./test_' + (time.ctime()).replace(' ', '_').replace(':', '_') + '.txt', 'w')
     for pth_dir in opt.pth_dirs:
         opt.train_dataset_name = pth_dir.split('/')[0]
         print(pth_dir)
