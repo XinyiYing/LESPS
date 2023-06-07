@@ -49,9 +49,9 @@ def test():
         model_name = opt.pth_dir.split('/')[-1] .split('.')[0]
         if opt.save_img == True:
             img_save = transforms.ToPILImage()((pred[0,:,:size[0],:size[1]]).cpu())
-            if not os.path.exists(opt.save_img_dir + opt.dataset_name + '/' + model_name ):
-                os.makedirs(opt.save_img_dir + opt.dataset_name + '/' + model_name )
-            img_save.save(opt.save_img_dir + opt.dataset_name + '/' + model_name + '/' + img_dir[0] + '.png')  
+            if not os.path.exists(opt.save_img_dir + opt.test_dataset_name + '/' + model_name ):
+                os.makedirs(opt.save_img_dir + opt.test_dataset_name + '/' + model_name )
+            img_save.save(opt.save_img_dir + opt.test_dataset_name + '/' + model_name + '/' + img_dir[0] + '.png')  
     
     results1 = eval_mIoU.get()
     results2 = eval_PD_FA.get()
