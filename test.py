@@ -42,6 +42,8 @@ def test():
     for idx_iter, (img, gt_mask, size, img_dir) in enumerate(test_loader):
         img = Variable(img).cuda()
         pred = net.forward(img)
+        pred = pred[:,:,:size[0],:size[1])
+        gt_mask = gt_mask[:,:,:size[0],:size[1]) 
         eval_mIoU.update((pred>opt.threshold).cpu(), gt_mask)
         eval_PD_FA.update((pred[0,0,:,:]>opt.threshold).cpu(), gt_mask[0,0,:,:], size)   
         
