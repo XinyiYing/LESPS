@@ -47,6 +47,16 @@ Supervision (LESPS). During training, intermediate predictions of CNNs are used 
   │    │    ├── Misc_1.png
   │    │    ├── ...
   │    │    ├── 001327.png
+  │    ├── masks_centroid
+  │    │    ├── XDU0.png
+  │    │    ├── Misc_1.png
+  │    │    ├── ...
+  │    │    ├── 001327.png
+  │    ├── masks_coarse
+  │    │    ├── XDU0.png
+  │    │    ├── Misc_1.png
+  │    │    ├── ...
+  │    │    ├── 001327.png
   │    ├── img_idx
   │    │    ├── train_SIRST3.txt
   │    │    ├── test_SIRST3.txt  
