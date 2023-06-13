@@ -54,12 +54,6 @@
 <b>3. Easy-to-hard learning property of CNNs.</b> CNNs always tend to learn simple mappings first, and then converge to difficult ones. Compared with region-to-point mapping, region-to-region mapping is easier, and thus tends to be the intermediate result of region-to-point mapping. <br><br>
 <b>In conclusion</b>, the unique characteristics of infrared small targets result in extended mapping regions beyond point labels, and CNNs contribute to the mapping degeneration process.
 <br><br><br>
-
-<table width="100%" border="0">
-  <tbody>
-  <tr>
-    <th scope="col"><img src="https://raw.github.com/XinyiYing/LESPS/master/Figs/MD2.jpg" width="100%"></th></tr></tbody></table>
-<p class="styleCaption" align="justify">Fig. 2: Quantitative and qualitative illustrations of mapping degeneration in CNNs.</p><br><br>
 	
 <table width="100%" border="0">
   <tbody>
@@ -71,7 +65,7 @@
 	<tbody>
 	<tr>
 	  <th scope="col"><img src="https://raw.github.com/XinyiYing/LESPS/master/Figs/MD_abl.jpg" width="100%"></th></tr></tbody></table>
-  <p class="styleCaption" align="justify">Fig. 3: Analyses of Mapping Degeneration with respect to different characteristics of targets (i.e.,(a) intensity, (b) size, (c) shape, and (d) local background clutter) and point labels (i.e.,(e) numbers and (f) locations). We visualize the zoom-in target regions of input images with GT point labels (i.e., red dots in images) and corresponding CNN predictions (in the epoch reaching maximum IoU). Illustrations of mapping degeneration under point supervision. CNNs always tend to segment a cluster of pixels near the targets with low confidence at the early stage, and then gradually learn to predict groundtruth point labels with high confidence.</p><br><br><br>
+  <p class="styleCaption" align="justify">Fig. 3: Analyses of Mapping Degeneration with respect to different characteristics of targets (i.e.,(a) intensity, (b) size, (c) shape, and (d) local background clutter) and point labels (i.e.,(e) numbers and (f) locations). We visualize the zoom-in target regions of input images with GT point labels (i.e., red dots in images) and corresponding CNN predictions (in the epoch reaching maximum IoU). Illustrations of mapping degeneration under point supervision. </p><br><br><br>
 
 <p class="styleCaption" align="justify">We develop an <b>online interactive demo</b> to show the mapping degeneration phenomenon. You can adjust the epoch number by dragging the sliding blocks.</p><br><br>
 
