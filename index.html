@@ -32,6 +32,14 @@
 </div>
 <br><br>
 
+<p class="STYLESection" align="center">Presentation</p>
+<hr style="BORDER-LEFT-STYLE: none; BORDER-TOP: gray 3px groove; HEIGHT: 0px; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none"><br>
+<!-- <video src="./Figs/LESPS_presentation_L.mp4" controls autoplay></video> -->
+<video width="1024" controls="controls" align="center">
+	<source src="https://raw.github.com/XinyiYing/LESPS/master/Figs/LESPS_presentation_L.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video><br><br><br>
+	
 <p class="STYLESection" align="center">The Mapping Degeneration Phenomenon</p>
 <hr style="BORDER-LEFT-STYLE: none; BORDER-TOP: gray 3px groove; HEIGHT: 0px; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none">
 <table width="100%" border="0">
@@ -40,6 +48,19 @@
     <th scope="col"><img src="https://raw.github.com/XinyiYing/LESPS/master/Figs/MD1.jpg" width="80%"></th></tr></tbody></table>
 <p class="styleCaption" align="justify">Fig. 1: Illustrations of mapping degeneration under point supervision. CNNs always tend to segment a cluster of pixels near the targets with low confidence at the early stage, and then gradually learn to predict groundtruth point labels with high confidence.</p><br><br>
 
+<p align="center"><b>Reasons of Mapping Degeneration:</b></p>
+<b>1. Special imaging mechanism of infrared systems.</b> Targets only have intensity information without structure and texture details, resulting in highly similar pixels within the target region.<br>
+<b>2. High local contrast of infrared small targets.</b> Pixels within the target region are much brighter or darker with high contrast against the local background clutter. <br>
+<b>3. Easy-to-hard learning property of CNNs.</b> CNNs always tend to learn simple mappings first, and then converge to difficult ones. Compared with region-to-point mapping, region-to-region mapping is easier, and thus tends to be the intermediate result of region-to-point mapping. <br><br>
+<b>In conclusion</b>, the unique characteristics of infrared small targets result in extended mapping regions beyond point labels, and CNNs contribute to the mapping degeneration process.
+<br><br><br>
+
+<table width="100%" border="0">
+  <tbody>
+  <tr>
+    <th scope="col"><img src="https://raw.github.com/XinyiYing/LESPS/master/Figs/MD2.jpg" width="100%"></th></tr></tbody></table>
+<p class="styleCaption" align="justify">Fig. 2: Quantitative and qualitative illustrations of mapping degeneration in CNNs.</p><br><br>
+	
 <table width="100%" border="0">
   <tbody>
   <tr>
