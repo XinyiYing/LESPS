@@ -37,7 +37,7 @@ Please first download datasets via [Baidu Drive](https://pan.baidu.com/s/1NT2jdj
 
 * Our project has the following structure:
   ```
-  ├──./datasets/
+  ├──./datasets/SIRST3/
   │    ├── images
   │    │    ├── XDU0.png
   │    │    ├── Misc_1.png
