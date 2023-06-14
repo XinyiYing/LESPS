@@ -33,6 +33,7 @@ Supervision (LESPS). During training, intermediate predictions of CNNs are used 
 * IRSTD-1K &nbsp; [[download dir]](https://github.com/RuiZhang97/ISNet) &nbsp; [[paper]](https://ieeexplore.ieee.org/document/9880295)
 
 **SIRST3** is used for training, and is a combination of NUAA-SIRST, NUDT-SIRST, IRSTD-1K datasets.
+Please first download datasets via [Baidu Drive](https://pan.baidu.com/s/1NT2jdjS4wrliYYP0Rt4nXw?pwd=m6ui) (key:1113), and place the datasets to the folder `./datasets/`.
 
 * Our project has the following structure:
   ```
