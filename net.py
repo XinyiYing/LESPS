@@ -65,7 +65,8 @@ class Net(nn.Module):
                         thresh_mask = thresh_mask - curr_mask
             
             ### Average Weighted Summation
-            updated_gt_mask = gt_mask_nbr * (1-thresh_mask) + ((gt_mask_nbr  + pred_nbr)/2)* thresh_mask
+            updated_gt_mask_nbr = gt_mask_nbr * (1-thresh_mask) + ((gt_mask_nbr  + pred_nbr)/2)* thresh_mask
+            updated_gt_mask = torch.max(updated_gt_mask, updated_gt_mask_nbr)
         
         ### Ensure initinal GT point label
         updated_gt_mask = torch.max(updated_gt_mask, (gt_mask==1).float())
