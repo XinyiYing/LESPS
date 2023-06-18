@@ -17,9 +17,10 @@ parser.add_argument("--model_names", default=['DNANet'], type=list,
 parser.add_argument("--dataset_names", default=['SIRST3'], type=list, 
                     help="dataset_name: 'NUAA-SIRST', 'NUDT-SIRST', 'IRSTD-1K', 'NUDT-SIRST-Sea', 'SIRST3'")
 parser.add_argument("--label_type", default='centroid', type=str, help="label type: centroid, coarse")
-parser.add_argument("--LESPS_Tepoch", default=40, type=int, help="Initial evolution epoch, default: 50")
-parser.add_argument("--LESPS_Tb", default=0.5, type=int, help="Tb in evolution threshold, default: 0.5")
-parser.add_argument("--LESPS_k", default=0.5, type=int, help="k in evolution threshold, default: 0.5")
+parser.add_argument("--LESPS_Tepoch", default=50, type=int, help="Initial evolution epoch, default: 50")
+parser.add_argument("--LESPS_Tloss", default=10, type=int, help="Tb in evolution threshold, default: 0.5")
+parser.add_argument("--LESPS_Tb", default=0.5, type=float, help="Tb in evolution threshold, default: 0.5")
+parser.add_argument("--LESPS_k", default=0.5, type=float, help="k in evolution threshold, default: 0.5")
 parser.add_argument("--LESPS_f", default=5, type=int, help="Evolution frequency, default: 5")
 parser.add_argument("--img_norm_cfg", default=None, type=dict,
                     help="specific a img_norm_cfg, default=None (using img_norm_cfg values of each dataset)")
@@ -82,7 +83,8 @@ def train():
             total_loss_epoch = []
         
         # first update    
-        if (idx_epoch + 1) > opt.LESPS_Tepoch and start_click == 0:
+        # if (idx_epoch + 1) > opt.LESPS_Tepoch and start_click == 0:
+        if total_loss_list[-1] < opt.LESPS_Tloss and start_click == 0:
             print('update start')
             start_click = 1 
             save_pth = opt.save + '/' + opt.dataset_name + '/' + opt.save_perdix + '_' + str(idx_epoch + 1) + '.pth.tar'
@@ -171,10 +173,10 @@ if __name__ == '__main__':
         opt.dataset_name = dataset_name
         for model_name in opt.model_names:
             opt.model_name = model_name
-            if opt.model_name in 'ACM, ALCNet':
-                opt.LESPS_Tepoch = 100
-            elif opt.model_name in 'DNANet':
-                opt.LESPS_Tepoch = 40
+            # if opt.model_name in 'ACM, ALCNet':
+            #     opt.LESPS_Tepoch = 100
+            # elif opt.model_name in 'DNANet':
+            #     opt.LESPS_Tepoch = 40
             opt.save_perdix = opt.model_name + '_LESPS_' + opt.label_type
             
             if opt.cache:
