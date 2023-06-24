@@ -200,3 +200,11 @@ def get_img_norm_cfg(dataset_name, dataset_dir):
             std_list.append(img.std())
         img_norm_cfg = dict(mean=float(np.array(mean_list).mean()), std=float(np.array(std_list).mean()))
     return img_norm_cfg
+
+def PadImg(img, times):
+    h, w = img.shape
+    if not h % times == 0:
+        img = np.pad(img, ((0, (h//times+1)*times-h),(0, 0)), mode='constant')
+    if not w % times == 0:
+        img = np.pad(img, ((0, 0),(0, (w//times+1)*times-w)), mode='constant')
+    return img   
