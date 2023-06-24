@@ -69,17 +69,22 @@ class Update_mask(Dataset):
             mask_update = Image.open(self.masks_update + '/' + self.train_list[idx] + '.png')
             update_dir = self.masks_update + '/' + self.train_list[idx] + '.png'
             mask_update = np.array(mask_update, dtype=np.float32)  / 255.0
+            if len(mask_update.shape) > 2:
+                mask_update = mask_update[:,:,0]
         elif isinstance(self.masks_update, list):
             mask_update = self.masks_update[idx]
             update_dir = idx
         
         img = Normalized(np.array(img, dtype=np.float32), self.img_norm_cfg)
         mask = np.array(mask, dtype=np.float32)  / 255.0
+
+        if len(mask.shape) > 2:
+            mask = mask[:,:,0]
         
         h, w = img.shape
-        img = np.pad(img, ((0, (h//32+1)*32-h),(0, (w//32+1)*32-w)), mode='constant')
-        mask = np.pad(mask, ((0,(h//32+1)*32-h),(0,(w//32+1)*32-w)), mode='constant')
-        mask_update = np.pad(mask_update, ((0,(h//32+1)*32-h),(0,(w//32+1)*32-w)), mode='constant')
+        img = PadImg(img)
+        mask = PadImg(mask)
+        mask_update = PadImg(mask_update)
         
         img, mask, mask_update = img[np.newaxis,:], mask[np.newaxis,:], mask_update[np.newaxis,:]
         
@@ -108,9 +113,12 @@ class TestSetLoader(Dataset):
         img = Normalized(np.array(img, dtype=np.float32), self.img_norm_cfg)
         mask = np.array(mask, dtype=np.float32)  / 255.0
         
+        if len(mask.shape) > 2:
+            mask = mask[:,:,0]
+            
         h, w = img.shape
-        img = np.pad(img, ((0, (h//32+1)*32-h),(0, (w//32+1)*32-w)), mode='constant')
-        mask = np.pad(mask, ((0,(h//32+1)*32-h),(0,(w//32+1)*32-w)), mode='constant')
+        img = PadImg(img)
+        mask = PadImg(mask)
         
         img, mask = img[np.newaxis,:], mask[np.newaxis,:]
         
