@@ -82,9 +82,9 @@ class Update_mask(Dataset):
             mask = mask[:,:,0]
         
         h, w = img.shape
-        img = PadImg(img)
-        mask = PadImg(mask)
-        mask_update = PadImg(mask_update)
+        img = PadImg(img, 32)
+        mask = PadImg(mask, 32)
+        mask_update = PadImg(mask_update, 32)
         
         img, mask, mask_update = img[np.newaxis,:], mask[np.newaxis,:], mask_update[np.newaxis,:]
         
@@ -117,8 +117,8 @@ class TestSetLoader(Dataset):
             mask = mask[:,:,0]
             
         h, w = img.shape
-        img = PadImg(img)
-        mask = PadImg(mask)
+        img = PadImg(img, 32)
+        mask = PadImg(mask, 32)
         
         img, mask = img[np.newaxis,:], mask[np.newaxis,:]
         
