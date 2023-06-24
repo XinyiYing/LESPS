@@ -126,6 +126,9 @@ def update_gt_mask(save_pth, thresh_Tb, thresh_k):
     for idx_iter, (img, gt_mask, gt_mask_update, update_dir, size) in tqdm(enumerate(update_loader)):
         img, gt_mask_update = Variable(img).cuda(), Variable(gt_mask_update).cuda()
         pred = net.forward(img)
+        pred = pred[:,:,:size[0],:size[1]]
+        gt_mask = gt_mask[:,:,:size[0],:size[1]]
+        gt_mask_update = gt_mask_update[:,:,:size[0],:size[1]]
         update_mask = net.update_gt(pred, gt_mask_update, thresh_Tb, thresh_k, size)
         if isinstance(update_dir, torch.Tensor):
             opt.masks_update[update_dir] = update_mask[0,0,:size[0],:size[1]].cpu().detach().numpy()
