@@ -11,6 +11,14 @@ import torch.nn.functional as F
 import os
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 
+def seed_pytorch(seed=42):
+    random.seed(seed)
+    os.environ['PYTHONHASHSEED'] = str(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    
 def random_crop(img, mask, patch_size): # HR: N*H*W
     h, w = img.shape
     if min(h, w) < patch_size:
