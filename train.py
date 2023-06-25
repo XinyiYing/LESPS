@@ -37,9 +37,11 @@ parser.add_argument("--step", type=int, default=[200, 300], help="Sets the learn
 parser.add_argument("--threads", type=int, default=1, help="Number of threads for data loader to use, default: 1")
 parser.add_argument("--threshold", type=float, default=0.5, help="Threshold for test, default: 0.5")
 parser.add_argument("--cache", default=False, type=str, help="True: cache intermediate mask results, False: save intermediate mask results")
+parser.add_argument("--seed", type=int, default=42, help="Threshold for test")
 
-global opt, model
+global opt
 opt = parser.parse_args()
+seed_pytorch(opt.seed)
 
 def train():
     train_set = TrainSetLoader(dataset_dir=opt.dataset_dir, dataset_name=opt.dataset_name, label_type=opt.label_type, patch_size=opt.patchSize, masks_update=opt.masks_update, img_norm_cfg=opt.img_norm_cfg)
