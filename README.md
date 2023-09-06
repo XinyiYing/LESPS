@@ -35,9 +35,9 @@ Supervision (LESPS). During training, intermediate predictions of CNNs are used 
 **SIRST3** is used for training, and is a combination of NUAA-SIRST, NUDT-SIRST, IRSTD-1K datasets.
 Please first download datasets via [Baidu Drive](https://pan.baidu.com/s/1NT2jdjS4wrliYYP0Rt4nXw?pwd=m6ui) (key:1113), and place the datasets to the folder `./datasets/`.
 
-**To gnenrate centroid annoation**, run matlab cpde ``` centroid_anno.m ```
+**To gnenrate centroid annoation**, run matlab code ``` centroid_anno.m ```
 
-**To gnenrate coarse annoation**, run matlab cpde ``` coarse_anno.m ```
+**To gnenrate coarse annoation**, run matlab code ``` coarse_anno.m ```
 
 * Our project has the following structure:
   ```
