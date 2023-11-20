@@ -102,7 +102,7 @@ class FocalLoss(nn.Module):
                     gamma=self.gamma)
                 loss_reg = weight_reduce_loss(loss_reg, weight, reduction, avg_factor)
                 loss_total = loss_total + loss_reg
-            return loss_total / len(preds)
+            return loss_total)
         else:
             pred = preds
             loss_reg = self.loss_weight * focal_loss(
