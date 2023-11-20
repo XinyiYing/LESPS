@@ -41,8 +41,6 @@ parser.add_argument("--seed", type=int, default=42, help="Threshold for test")
 
 global opt
 opt = parser.parse_args()
-seed_pytorch(opt.seed)
-
 def train():
     train_set = TrainSetLoader(dataset_dir=opt.dataset_dir, dataset_name=opt.dataset_name, label_type=opt.label_type, patch_size=opt.patchSize, masks_update=opt.masks_update, img_norm_cfg=opt.img_norm_cfg)
     train_loader = DataLoader(dataset=train_set, num_workers=1, batch_size=opt.batchSize, shuffle=True)
