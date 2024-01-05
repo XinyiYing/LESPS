@@ -16,7 +16,7 @@ parser.add_argument("--model_names", default=['DNANet'], type=list,
                     help="model_name: 'ACM', 'ALCNet', 'DNANet'")                 
 parser.add_argument("--dataset_names", default=['SIRST3'], type=list, 
                     help="dataset_name: 'NUAA-SIRST', 'NUDT-SIRST', 'IRSTD-1K', 'NUDT-SIRST-Sea', 'SIRST3'")
-parser.add_argument("--label_type", default='centroid', type=str, help="label type: centroid, coarse")
+parser.add_argument("--label_type", default='coarse', type=str, help="label type: centroid, coarse")
 parser.add_argument("--LESPS_Tepoch", default=50, type=int, help="Initial evolution epoch, default: 50")
 parser.add_argument("--LESPS_Tloss", default=10, type=int, help="Tb in evolution threshold, default: 0.5")
 parser.add_argument("--LESPS_Tb", default=0.5, type=float, help="Tb in evolution threshold, default: 0.5")
@@ -25,10 +25,10 @@ parser.add_argument("--LESPS_f", default=5, type=int, help="Evolution frequency,
 parser.add_argument("--img_norm_cfg", default=None, type=dict,
                     help="specific a img_norm_cfg, default=None (using img_norm_cfg values of each dataset)")
 
-parser.add_argument("--dataset_dir", default='/home/y/yxy/DNAnet/dataset/SIRST3', type=str, help="train_dataset_dir, default: './dataset")
+parser.add_argument("--dataset_dir", default='./datasets/SIRST3', type=str, help="train_dataset_dir, default: './datasets/SIRST3")
 parser.add_argument("--batchSize", type=int, default=16, help="Training batch sizse, default: 16")
 parser.add_argument("--patchSize", type=int, default=256, help="Training patch size, default: 256")
-parser.add_argument("--save", default='./log4', type=str, help="Save path, default: './log")
+parser.add_argument("--save", default='./log', type=str, help="Save path, default: './log")
 parser.add_argument("--resume", default=None, type=str, help="Resume path, default: None")
 parser.add_argument("--nEpochs", type=int, default=400, help="Number of epochs, default: 400")
 parser.add_argument("--lr", type=float, default=5e-4, help="Learning Rate, default: 5e-4")

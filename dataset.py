@@ -83,9 +83,9 @@ class Update_mask(Dataset):
         
         h, w = img.shape
         times = 32
-        img = np.pad(img, ((0, 0),(0, (w//times+1)*times-w)), mode='constant')
-        mask = np.pad(mask, ((0, 0),(0, (w//times+1)*times-w)), mode='constant')
-        mask_update = np.pad(mask_update, ((0, 0),(0, (w//times+1)*times-w)), mode='constant')
+        img = np.pad(img, ((0, (h//times+1)*times-h),(0, (w//times+1)*times-w)), mode='constant')
+        mask = np.pad(mask, ((0, (h//times+1)*times-h),(0, (w//times+1)*times-w)), mode='constant')
+        mask_update = np.pad(mask_update, ((0, (h//times+1)*times-h),(0, (w//times+1)*times-w)), mode='constant')
         
         img, mask, mask_update = img[np.newaxis,:], mask[np.newaxis,:], mask_update[np.newaxis,:]
         
@@ -119,8 +119,8 @@ class TestSetLoader(Dataset):
             
         h, w = img.shape
         times = 32
-        img = np.pad(img, ((0, 0),(0, (w//times+1)*times-w)), mode='constant')
-        mask = np.pad(mask, ((0, 0),(0, (w//times+1)*times-w)), mode='constant')
+        img = np.pad(img, ((0, (h//times+1)*times-h),(0, (w//times+1)*times-w)), mode='constant')
+        mask = np.pad(mask, ((0, (h//times+1)*times-h),(0, (w//times+1)*times-w)), mode='constant')
         
         img, mask = img[np.newaxis,:], mask[np.newaxis,:]
         
