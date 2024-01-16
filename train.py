@@ -195,7 +195,7 @@ if __name__ == '__main__':
             ### save intermediate loss vaules
             if not os.path.exists(opt.save):
                 os.makedirs(opt.save)
-            opt.f = open(opt.save + '/' + opt.dataset_name + '_' + opt.model_name + '_LESPS_' + opt.label_type + '_' + (time.ctime()).replace(' ', '_') + '.txt', 'w')
+            opt.f = open(opt.save + '/' + opt.dataset_name + '_' + opt.model_name + '_LESPS_' + opt.label_type + '_' + (time.ctime()).replace(' ', '_').replace(':', '_') + '.txt', 'w')
 
             opt.train_iou_list = []
             opt.test_iou_list = []
