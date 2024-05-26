@@ -10,12 +10,12 @@ import time
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 parser = argparse.ArgumentParser(description="PyTorch LESPS test")
-parser.add_argument("--model_names", default=['ACM', 'ALCNet', 'DNANet'], type=list, help="model_name: 'ACM', 'ALCNet', 'DNANet'")
+parser.add_argument("--model_names", default=['ACM', 'ALCNet', 'DNANet'], nargs='+', help="model_name: 'ACM', 'ALCNet', 'DNANet'")
 parser.add_argument("--pth_dirs", default=['SIRST3/ACM_full.pth.tar','SIRST3/ACM_LESPS_centroid.pth.tar','SIRST3/ACM_LESPS_coarse.pth.tar',
                                            'SIRST3/ALCNet_full.pth.tar','SIRST3/ALCNet_LESPS_centroid.pth.tar','SIRST3/ALCNet_LESPS_coarse.pth.tar',
                                            'SIRST3/DNANet_full.pth.tar','SIRST3/DNANet_LESPS_centroid.pth.tar','SIRST3/DNANet_LESPS_coarse.pth.tar',], 
-                                            type=list, help="checkpoint dir, default=None")
-parser.add_argument("--dataset_names", default=['NUAA-SIRST', 'NUDT-SIRST', 'IRSTD-1K',], type=list,
+                                            nargs='+', help="checkpoint dir, default=None")
+parser.add_argument("--dataset_names", default=['NUAA-SIRST', 'NUDT-SIRST', 'IRSTD-1K'], nargs='+', 
                     help="dataset_name: 'NUAA-SIRST', 'NUDT-SIRST', 'IRSTD-1K', 'SIRST3', 'NUDT-SIRST-Sea'")
 parser.add_argument("--img_norm_cfg", default=None, type=dict,
                     help="specific a img_norm_cfg, default=None (using img_norm_cfg values of each dataset)")
