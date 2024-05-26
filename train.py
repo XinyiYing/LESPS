@@ -12,9 +12,9 @@ from tqdm import tqdm
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 
 parser = argparse.ArgumentParser(description="PyTorch LESPS train")
-parser.add_argument("--model_names", default=['DNANet'], type=list, 
+parser.add_argument("--model_names", default=['DNANet'], nargs='+', 
                     help="model_name: 'ACM', 'ALCNet', 'DNANet'")                 
-parser.add_argument("--dataset_names", default=['SIRST3'], type=list, 
+parser.add_argument("--dataset_names", default=['SIRST3'], nargs='+', 
                     help="dataset_name: 'NUAA-SIRST', 'NUDT-SIRST', 'IRSTD-1K', 'NUDT-SIRST-Sea', 'SIRST3'")
 parser.add_argument("--label_type", default='coarse', type=str, help="label type: centroid, coarse")
 parser.add_argument("--LESPS_Tepoch", default=50, type=int, help="Initial evolution epoch, default: 50")
