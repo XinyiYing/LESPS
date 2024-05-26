@@ -48,6 +48,36 @@ class TrainSetLoader(Dataset):
     def __len__(self):
         return len(self.train_list)
 
+class TrainSetLoader_full(Dataset):
+    def __init__(self, dataset_dir, dataset_name, patch_size, img_norm_cfg=None):
+        super(TrainSetLoader_full).__init__()
+        self.dataset_dir = dataset_dir
+        self.patch_size = patch_size
+        self.tranform = augumentation()
+        with open(self.dataset_dir+'/img_idx/train_' + dataset_name + '.txt', 'r') as f:
+            self.train_list = f.read().splitlines()
+        if img_norm_cfg == None:
+            self.img_norm_cfg = get_img_norm_cfg(dataset_name, dataset_dir)
+        else:
+            self.img_norm_cfg = img_norm_cfg
+        self.dataset_name = dataset_name
+            
+    def __getitem__(self, idx):
+        img = Image.open(self.dataset_dir + '/images/' + self.train_list[idx] + '.png').convert('I')
+        mask = Image.open(self.dataset_dir + '/masks/' + self.train_list[idx] + '.png')
+        mask = np.array(mask, dtype=np.float32)  / 255.0
+        if len(mask.shape) > 2:
+            mask = mask[:,:,0]
+        img = Normalized(np.array(img, dtype=np.float32), self.img_norm_cfg)
+        img_patch, mask_patch = random_crop(img, mask, self.patch_size)
+        img_patch, mask_patch = self.tranform(img_patch, mask_patch)
+        img_patch, mask_patch = img_patch[np.newaxis,:], mask_patch[np.newaxis,:]
+        img_patch = torch.from_numpy(np.ascontiguousarray(img_patch))
+        mask_patch = torch.from_numpy(np.ascontiguousarray(mask_patch))
+        return img_patch, mask_patch
+    def __len__(self):
+        return len(self.train_list)
+
 class Update_mask(Dataset):
     def __init__(self, dataset_dir, dataset_name, label_type, masks_update, img_norm_cfg=None):
         super(Update_mask).__init__()
