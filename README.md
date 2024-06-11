@@ -76,6 +76,8 @@ Please first download datasets via [Baidu Drive](https://pan.baidu.com/s/1NT2jdj
 python train.py --model_names DNANet ALCNet ACM --dataset_names SIRST3 --label_type 'centroid'
 
 python train.py --model_names DNANet ALCNet ACM --dataset_names SIRST3 --label_type 'coarse'
+
+python train_full.py --model_names DNANet ALCNet ACM --dataset_names SIRST3 --label_type 'full'
 ```
 <br>
 
