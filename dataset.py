@@ -160,6 +160,33 @@ class TestSetLoader(Dataset):
     def __len__(self):
         return len(self.test_list) 
 
+class InferenceSetLoader(Dataset):
+    def __init__(self, dataset_dir, train_dataset_name, test_dataset_name, img_norm_cfg=None):
+        super(InferenceSetLoader).__init__()
+        self.dataset_dir = dataset_dir
+        with open(self.dataset_dir+'/img_idx/test_' + test_dataset_name + '.txt', 'r') as f:
+            self.test_list = f.read().splitlines()
+        if img_norm_cfg == None:
+            self.img_norm_cfg = get_img_norm_cfg(train_dataset_name, dataset_dir)
+        else:
+            self.img_norm_cfg = img_norm_cfg
+            
+    def __getitem__(self, idx):
+        img = Image.open(self.dataset_dir + '/images/' + self.test_list[idx] + '.png').convert('I')
+        
+        img = Normalized(np.array(img, dtype=np.float32), self.img_norm_cfg)
+            
+        h, w = img.shape
+        times = 32
+        img = np.pad(img, ((0, (h//times+1)*times-h),(0, (w//times+1)*times-w)), mode='constant')
+        
+        img = img[np.newaxis,:]
+        
+        img = torch.from_numpy(np.ascontiguousarray(img))
+        return img, [h,w], self.test_list[idx]
+    def __len__(self):
+        return len(self.test_list) 
+
 class augumentation(object):
     def __call__(self, input, target):
         if random.random()<0.5:
