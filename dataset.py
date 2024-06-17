@@ -7,7 +7,7 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 class TrainSetLoader(Dataset):
     def __init__(self, dataset_dir, dataset_name, label_type, patch_size, masks_update, img_norm_cfg=None):
         super(TrainSetLoader).__init__()
-        self.dataset_dir = dataset_dir
+        self.dataset_dir = dataset_dir + dataset_name
         self.patch_size = patch_size
         self.tranform = augumentation()
         self.masks_update = masks_update
@@ -51,7 +51,7 @@ class TrainSetLoader(Dataset):
 class TrainSetLoader_full(Dataset):
     def __init__(self, dataset_dir, dataset_name, patch_size, img_norm_cfg=None):
         super(TrainSetLoader_full).__init__()
-        self.dataset_dir = dataset_dir
+        self.dataset_dir = dataset_dir + dataset_name
         self.patch_size = patch_size
         self.tranform = augumentation()
         with open(self.dataset_dir+'/img_idx/train_' + dataset_name + '.txt', 'r') as f:
@@ -83,7 +83,7 @@ class Update_mask(Dataset):
         super(Update_mask).__init__()
         self.label_type = label_type
         self.masks_update = masks_update
-        self.dataset_dir = dataset_dir
+        self.dataset_dir = dataset_dir + dataset_name
         self.dataset_name = dataset_name
         with open(self.dataset_dir+'/img_idx/train_' + dataset_name + '.txt', 'r') as f:
             self.train_list = f.read().splitlines()
@@ -129,7 +129,7 @@ class Update_mask(Dataset):
 class TestSetLoader(Dataset):
     def __init__(self, dataset_dir, train_dataset_name, test_dataset_name, img_norm_cfg=None):
         super(TestSetLoader).__init__()
-        self.dataset_dir = dataset_dir
+        self.dataset_dir = dataset_dir + test_dataset_name
         with open(self.dataset_dir+'/img_idx/test_' + test_dataset_name + '.txt', 'r') as f:
             self.test_list = f.read().splitlines()
         if img_norm_cfg == None:
@@ -163,7 +163,7 @@ class TestSetLoader(Dataset):
 class InferenceSetLoader(Dataset):
     def __init__(self, dataset_dir, train_dataset_name, test_dataset_name, img_norm_cfg=None):
         super(InferenceSetLoader).__init__()
-        self.dataset_dir = dataset_dir
+        self.dataset_dir = dataset_dir + test_dataset_name
         with open(self.dataset_dir+'/img_idx/test_' + test_dataset_name + '.txt', 'r') as f:
             self.test_list = f.read().splitlines()
         if img_norm_cfg == None:

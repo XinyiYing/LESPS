@@ -25,7 +25,7 @@ parser.add_argument("--LESPS_f", default=5, type=int, help="Evolution frequency,
 parser.add_argument("--img_norm_cfg", default=None, type=dict,
                     help="specific a img_norm_cfg, default=None (using img_norm_cfg values of each dataset)")
 
-parser.add_argument("--dataset_dir", default='./datasets/SIRST3', type=str, help="train_dataset_dir, default: './datasets/SIRST3")
+parser.add_argument("--dataset_dir", default='./datasets/', type=str, help="train_dataset_dir, default: './datasets/SIRST3")
 parser.add_argument("--batchSize", type=int, default=16, help="Training batch sizse, default: 16")
 parser.add_argument("--patchSize", type=int, default=256, help="Training patch size, default: 256")
 parser.add_argument("--save", default='./log', type=str, help="Save path, default: './log")

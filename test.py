@@ -24,7 +24,7 @@ parser.add_argument("--img_norm_cfg_mean", default=None, type=float,
 parser.add_argument("--img_norm_cfg_std", default=None, type=float,
                     help="specific a std value img_norm_cfg, default=None (using img_norm_cfg values of each dataset)")
 
-parser.add_argument("--dataset_dir", default='./dataset/SIRST3', type=str, help="train_dataset_dir")
+parser.add_argument("--dataset_dir", default='./datasets/', type=str, help="train_dataset_dir")
 parser.add_argument("--save_img", default=False, type=bool, help="save image of or not")
 parser.add_argument("--save_img_dir", type=str, default='./results/', help="path of saved image")
 parser.add_argument("--save_log", type=str, default='./log/', help="path of saved .pth")
