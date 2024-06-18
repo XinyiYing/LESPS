@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from metrics import *
 import os
 import time
+from tqdm import tqdm
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 parser = argparse.ArgumentParser(description="PyTorch LESPS test")
@@ -49,7 +50,7 @@ def test():
     eval_mIoU = mIoU() 
     eval_PD_FA = PD_FA()
     with torch.no_grad():
-        for idx_iter, (img, size, img_dir) in enumerate(test_loader):
+        for idx_iter, (img, size, img_dir) in tqdm(enumerate(test_loader)):
             img = Variable(img).cuda()
             pred = net.forward(img)
             pred = pred[:,:,:size[0],:size[1]]
