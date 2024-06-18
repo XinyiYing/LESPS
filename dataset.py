@@ -14,7 +14,7 @@ class TrainSetLoader(Dataset):
         with open(self.dataset_dir+'/img_idx/train_' + dataset_name + '.txt', 'r') as f:
             self.train_list = f.read().splitlines()
         if img_norm_cfg == None:
-            self.img_norm_cfg = get_img_norm_cfg(dataset_name, dataset_dir)
+            self.img_norm_cfg = get_img_norm_cfg(dataset_name, self.dataset_dir)
         else:
             self.img_norm_cfg = img_norm_cfg
         self.dataset_name = dataset_name
@@ -57,7 +57,7 @@ class TrainSetLoader_full(Dataset):
         with open(self.dataset_dir+'/img_idx/train_' + dataset_name + '.txt', 'r') as f:
             self.train_list = f.read().splitlines()
         if img_norm_cfg == None:
-            self.img_norm_cfg = get_img_norm_cfg(dataset_name, dataset_dir)
+            self.img_norm_cfg = get_img_norm_cfg(dataset_name, self.dataset_dir)
         else:
             self.img_norm_cfg = img_norm_cfg
         self.dataset_name = dataset_name
@@ -88,7 +88,7 @@ class Update_mask(Dataset):
         with open(self.dataset_dir+'/img_idx/train_' + dataset_name + '.txt', 'r') as f:
             self.train_list = f.read().splitlines()
         if img_norm_cfg == None:
-            self.img_norm_cfg = get_img_norm_cfg(dataset_name, dataset_dir)
+            self.img_norm_cfg = get_img_norm_cfg(dataset_name, self.dataset_dir)
         else:
             self.img_norm_cfg = img_norm_cfg
         
@@ -133,7 +133,7 @@ class TestSetLoader(Dataset):
         with open(self.dataset_dir+'/img_idx/test_' + test_dataset_name + '.txt', 'r') as f:
             self.test_list = f.read().splitlines()
         if img_norm_cfg == None:
-            self.img_norm_cfg = get_img_norm_cfg(train_dataset_name, dataset_dir)
+            self.img_norm_cfg = get_img_norm_cfg(train_dataset_name, self.dataset_dir)
         else:
             self.img_norm_cfg = img_norm_cfg
             
@@ -167,7 +167,7 @@ class InferenceSetLoader(Dataset):
         with open(self.dataset_dir+'/img_idx/test_' + test_dataset_name + '.txt', 'r') as f:
             self.test_list = f.read().splitlines()
         if img_norm_cfg == None:
-            self.img_norm_cfg = get_img_norm_cfg(train_dataset_name, dataset_dir)
+            self.img_norm_cfg = get_img_norm_cfg(train_dataset_name, self.dataset_dir)
         else:
             self.img_norm_cfg = img_norm_cfg
             
