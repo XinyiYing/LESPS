@@ -70,7 +70,7 @@ def train():
             optimizer.step()
     
         scheduler.step()
-        if (idx_epoch + 1) % 5 == 0:
+        if (idx_epoch + 1) % 1 == 0:
             total_loss_list.append(float(np.array(total_loss_epoch).mean()))
             print(time.ctime()[4:-5] + ' Epoch---%d, total_loss---%f,' % (idx_epoch + 1, total_loss_list[-1]))
             opt.f.write(time.ctime()[4:-5] + ' Epoch---%d, total_loss---%f,\n' % (idx_epoch + 1, total_loss_list[-1]))
