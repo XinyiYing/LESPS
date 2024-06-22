@@ -30,6 +30,7 @@ parser.add_argument("--save_img", default=False, type=bool, help="save image of 
 parser.add_argument("--save_img_dir", type=str, default='./results/', help="path of saved image")
 parser.add_argument("--save_log", type=str, default='./log/', help="path of saved .pth")
 parser.add_argument("--threshold", type=float, default=0.5)
+parser.add_argument("--patchSize", type=int, default=1024, help="Training patch size, default: 512")
 
 global opt
 opt = parser.parse_args()
@@ -52,7 +53,23 @@ def test():
     with torch.no_grad():
         for idx_iter, (img, gt_mask, size, img_dir) in tqdm(enumerate(test_loader)):
             img = Variable(img).cuda()
-            pred = net.forward(img)
+            b, c, h, w = img.shape
+            if h > opt.patchSize and w > opt.patchSize:
+                img_unfold = F.unfold(img[:,:,:,:], opt.patchSize, stride=opt.patchSize)
+                img_unfold = img_unfold.reshape(c, opt.patchSize, opt.patchSize, -1).permute(3, 0, 1, 2)
+                patch_num = img_unfold.size(0)
+                for pi in range(patch_num):
+                    img_pi = img_unfold[pi, :,:,:].unsqueeze(0).float()
+                    img_pi = Variable(img_pi)
+                    preds_pi = net.forward(img_pi)
+                    if pi == 0:
+                        preds = preds_pi
+                    else:
+                        preds = torch.cat([preds, preds_pi], dim=0)
+                preds = preds.permute(1,2,3,0).unsqueeze(0)
+                pred = F.fold(preds.reshape(1,-1,patch_num), kernel_size=opt.patchSize, stride=opt.patchSize, output_size=(h,w))
+            else: 
+                pred = net.forward(img)  
             pred = pred[:,:,:size[0],:size[1]]
             gt_mask = gt_mask[:,:,:size[0],:size[1]]
             eval_mIoU.update((pred>opt.threshold).cpu(), gt_mask)
