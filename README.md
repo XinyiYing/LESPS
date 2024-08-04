@@ -6,6 +6,8 @@ Pytorch implementation of our Label Evolution with Single Point Supervision (LES
 <br><br>
 
 ## Overview
+[<img src="https://raw.github.com/XinyiYing/LESPS/master/Figs/LESPS_presentation.png" width="800"/><br>](https://wyqdatabase.s3.us-west-1.amazonaws.com/MDMLE.mp4)
+Sclice is in ``` Figs/LESPS_presentation.pptx ```
 
 ### The Mapping Degeneration Phenomenon
 <img src="https://raw.github.com/XinyiYing/LESPS/master/Figs/MD1.jpg" width="550"/><br>
