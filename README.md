@@ -30,11 +30,11 @@ Supervision (LESPS). During training, intermediate predictions of CNNs are used 
 <br><br>
 
 ## Datasets
-* NUAA-SIRST &nbsp; [[download dir]](https://github.com/YimianDai/sirst) &nbsp; [[paper]](https://arxiv.org/pdf/2009.14530.pdf)
+* SIRST &nbsp; [[download dir]](https://github.com/YimianDai/sirst) &nbsp; [[paper]](https://arxiv.org/pdf/2009.14530.pdf)
 * NUDT-SIRST &nbsp; [[download dir]](https://github.com/YeRen123455/Infrared-Small-Target-Detection) &nbsp; [[paper]](https://ieeexplore.ieee.org/abstract/document/9864119)
 * IRSTD-1K &nbsp; [[download dir]](https://github.com/RuiZhang97/ISNet) &nbsp; [[paper]](https://ieeexplore.ieee.org/document/9880295)
 
-**SIRST3** is used for training, and is a combination of NUAA-SIRST, NUDT-SIRST, IRSTD-1K datasets.
+**SIRST3** is used for training, and is a combination of SIRST, NUDT-SIRST, IRSTD-1K datasets.
 Please first download datasets via [Baidu Drive](https://pan.baidu.com/s/1NT2jdjS4wrliYYP0Rt4nXw?pwd=m6ui) (key:1113), and place the datasets to the folder `./datasets/`.
 
 **To gnenrate centroid annoation**, run matlab code ``` centroid_anno.m ```
@@ -67,7 +67,7 @@ Please first download datasets via [Baidu Drive](https://pan.baidu.com/s/1NT2jdj
   │    ├── img_idx
   │    │    ├── train_SIRST3.txt
   │    │    ├── test_SIRST3.txt  
-  │    │    ├── test_NUAA-SIRST.txt
+  │    │    ├── test_SIRST.txt
   │    │    ├── test_NUDT-SIRST.txt
   │    │    ├── test_IRSTD-1K.txt
   ```
@@ -85,9 +85,9 @@ python train_full.py --model_names DNANet ALCNet ACM --dataset_names SIRST3 --la
 
 ## Test
 ```bash
-python test.py --model_names DNANet ALCNet ACM --pth_dirs None --dataset_names NUAA-SIRST NUDT-SIRST IRSTD-1K
+python test.py --model_names DNANet ALCNet ACM --pth_dirs None --dataset_names SIRST NUDT-SIRST IRSTD-1K
 
-python test.py --model_names DNANet ALCNet ACM --pth_dirs SIRST3/DNANet_full.pth.tar SIRST3/DNANet_LESPS_centroid.pth.tar SIRST3/DNANet_LESPS_coarse.pth.tar SIRST3/ALCNet_full.pth.tar SIRST3/ALCNet_LESPS_centroid.pth.tar SIRST3/ALCNet_LESPS_coarse.pth.tar SIRST3/ACM_full.pth.tar SIRST3/ACM_LESPS_centroid.pth.tar SIRST3/ACM_LESPS_coarse.pth.tar --dataset_names NUAA-SIRST NUDT-SIRST IRSTD-1K
+python test.py --model_names DNANet ALCNet ACM --pth_dirs SIRST3/DNANet_full.pth.tar SIRST3/DNANet_LESPS_centroid.pth.tar SIRST3/DNANet_LESPS_coarse.pth.tar SIRST3/ALCNet_full.pth.tar SIRST3/ALCNet_LESPS_centroid.pth.tar SIRST3/ALCNet_LESPS_coarse.pth.tar SIRST3/ACM_full.pth.tar SIRST3/ACM_LESPS_centroid.pth.tar SIRST3/ACM_LESPS_coarse.pth.tar --dataset_names SIRST NUDT-SIRST IRSTD-1K
 ```
 <br>
 
