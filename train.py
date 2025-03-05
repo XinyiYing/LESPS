@@ -25,7 +25,7 @@ parser.add_argument("--LESPS_f", default=5, type=int, help="Evolution frequency,
 parser.add_argument("--img_norm_cfg", default=None, type=dict,
                     help="specific a img_norm_cfg, default=None (using img_norm_cfg values of each dataset)")
 
-parser.add_argument("--dataset_dir", default='./datasets/', type=str, help="train_dataset_dir, default: './datasets/SIRST3")
+parser.add_argument("--dataset_dir", default='./datasets/', type=str, help="train_dataset_dir, default: './datasets/")
 parser.add_argument("--batchSize", type=int, default=16, help="Training batch sizse, default: 16")
 parser.add_argument("--patchSize", type=int, default=256, help="Training patch size, default: 256")
 parser.add_argument("--save", default='./log', type=str, help="Save path, default: './log")
@@ -181,16 +181,16 @@ if __name__ == '__main__':
             
             if opt.cache:
                 ### cache intermediate mask results
-                with open(opt.dataset_dir+'/img_idx/train_' + opt.dataset_name + '.txt', 'r') as f:
+                with open(opt.dataset_dir + opt.dataset_name + '/img_idx/train_' + opt.dataset_name + '.txt', 'r') as f:
                     train_list = f.read().splitlines()
                 opt.masks_update = []
                 for idx in range(len(train_list)):
-                    mask = Image.open(opt.dataset_dir + '/masks_' + opt.label_type + '/' + train_list[idx] + '.png')
+                    mask = Image.open(opt.dataset_dir + opt.dataset_name + '/masks_' + opt.label_type + '/' + train_list[idx] + '.png')
                     mask = np.array(mask, dtype=np.float32)  / 255.0
                     opt.masks_update.append(mask)
             else:
                 ### save intermediate mask results to 
-                opt.masks_update = opt.dataset_dir + '/' + opt.dataset_name + '_' + opt.save_perdix + '_' + (time.ctime()).replace(' ', '_')
+                opt.masks_update = opt.dataset_dir + opt.dataset_name + '_' + opt.save_perdix + '_' + (time.ctime()).replace(' ', '_')
 
             ### save intermediate loss vaules
             if not os.path.exists(opt.save):
